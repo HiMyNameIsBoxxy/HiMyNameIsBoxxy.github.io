@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Data Scientist</title>
+    <title>Huan - Data Scientist</title>
     <style>
         body {
             margin: 0;
@@ -14,13 +14,27 @@
         header {
             background: #fff;
             border-bottom: 1px solid #ddd;
-            padding: 10px 20px;
+            padding: 20px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        header h2 {
+            margin: 0;
+        }
+        header nav {
+            display: flex;
+            justify-content: flex-start;
+            margin-left: 30px;
         }
         header nav a {
-            margin-left: 20px;
+            margin-right: 80px;
+            font-size: 1.2em;
             text-decoration: none;
             color: #333;
         }
@@ -28,78 +42,95 @@
             text-decoration: underline;
         }
         .container {
-            padding: 40px 20px;
-            max-width: 1200px;
+            padding: 100px 20px 40px; /* Adjust padding to account for fixed header */
             margin: 0 auto;
+            max-width: 100%;
         }
         h1, h2 {
             margin-bottom: 10px;
         }
         .intro {
-            margin-bottom: 40px;
+            margin-bottom: 20px;
+            text-align: left;
         }
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .project {
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            padding: 15px;
-            text-align: center;
-            border-radius: 5px;
-        }
-        .project a {
-            text-decoration: none;
-            color: #007BFF;
+        .intro h1 {
+            font-size: 2.5em;
             font-weight: bold;
         }
-        .project a:hover {
-            text-decoration: underline;
+        .intro p {
+            font-size: 1.5em;
+        }
+        .projects {
+            display: flex;
+            flex-direction: column;
+        }
+        .project {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .project img {
+            width: 100%;
+            display: block;
+        }
+        .project .description {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 10px;
+            font-size: 1em;
+            max-width: calc(100% - 20px);
+            box-sizing: border-box;
+        }
+        .project a {
+            display: block;
+            width: 100%;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
     <header>
         <div>
-            <h2>Your Name</h2>
+            <h2>Huan</h2>
         </div>
         <nav>
             <a href="#home">Home</a>
             <a href="#projects">Projects</a>
-            <a href="#about">About</a>
+            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+            <a href="#resume">Resume</a>
         </nav>
     </header>
 
     <div id="home" class="container intro">
-        <h1>Hi, I’m [Your Name]</h1>
-        <p>A data scientist with expertise in analytics, machine learning, and storytelling. I specialize in solving complex problems and transforming data into actionable insights.</p>
+        <h1>Hi, I’m Huan.</h1>
+        <p>An aspiring data scientist with diverse background in machine learning, analytics, and application design. Check out my projects!</p>
     </div>
 
     <div id="projects" class="container">
-        <h2>Latest Projects</h2>
+        <h2>Projects</h2>
         <div class="projects">
             <div class="project">
-                <h3>Project 1</h3>
-                <p>Short description of the project goes here.</p>
-                <a href="#">View Project</a>
+                <a href="statistical_analysis.html">
+                    <div class="description">Project 1: Statistical Analysis</div>
+                    <img src="https://via.placeholder.com/1200x400" alt="Statistical Analysis">
+                </a>
             </div>
             <div class="project">
-                <h3>Project 2</h3>
-                <p>Short description of the project goes here.</p>
-                <a href="#">View Project</a>
-            </div>
-            <div class="project">
-                <h3>Project 3</h3>
-                <p>Short description of the project goes here.</p>
-                <a href="#">View Project</a>
+                <a href="predictive_model.html">
+                    <div class="description">Project 2: Predictive Modeling</div>
+                    <img src="https://via.placeholder.com/1200x400" alt="Predictive Modeling">
+                </a>
             </div>
         </div>
     </div>
 
     <footer style="text-align:center; padding:20px; background:#f1f1f1;">
-        <p>&copy; 2024 Your Name. All rights reserved.</p>
+        <p>&copy; 2024 Huan. All rights reserved.</p>
     </footer>
 </body>
 </html>
