@@ -3,89 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi, I'm Boxxy!</title>
+    <title>Your Name - Data Scientist</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background: #f9f9f9;
-            color: #333;
+            font-family: Arial, sans-serif;
             line-height: 1.6;
+            color: #333;
         }
         header {
-            background: #007acc;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        header h1 {
-            margin: 0;
-        }
-        section {
-            padding: 2rem;
-            max-width: 800px;
-            margin: auto;
-        }
-        .btn {
-            display: inline-block;
-            background: #007acc;
-            color: white;
-            padding: 0.5rem 1rem;
+        header nav a {
+            margin-left: 20px;
             text-decoration: none;
+            color: #333;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            margin-bottom: 10px;
+        }
+        .intro {
+            margin-bottom: 40px;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .project {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
             border-radius: 5px;
-            margin-top: 1rem;
         }
-        .btn:hover {
-            background: #005f99;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem 0;
-            background: #f1f1f1;
-            margin-top: 2rem;
-        }
-        footer a {
-            color: #007acc;
+        .project a {
             text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
         }
-        footer a:hover {
+        .project a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Hi, I'm Boxxy!</h1>
-        <p>Welcome to my portfolio</p>
+        <div>
+            <h2>Your Name</h2>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#about">About</a>
+        </nav>
     </header>
-    <section>
-        <h2>About Me</h2>
-        <p>
-            I’m a passionate data analyst and aspiring data scientist with a knack for building insightful projects and creative solutions. Explore my work below!
-        </p>
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Project 1:</strong> Real-time Data Pipeline using Kafka and Python</li>
-            <li><strong>Project 2:</strong> Stock Market Dashboard with Tableau</li>
-            <li><strong>Project 3:</strong> CO2 Emission Analysis in R</li>
-        </ul>
-        <a href="#contact" class="btn">Get in Touch</a>
-    </section>
-    <section>
-        <h2>Skills</h2>
-        <p>
-            Python, R, SQL, Tableau, Data Analysis, Machine Learning (beginner)
-        </p>
-    </section>
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out for collaborations or opportunities!</p>
-        <p>Email: <a href="mailto:HiMyNameIsBoxxy@gmail.com">HiMyNameIsBoxxy@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/HiMyNameIsBoxxy">HiMyNameIsBoxxy</a></p>
-    </section>
-    <footer>
-        <p>© 2024 Hi, I'm Boxxy | Built with 💙</p>
+
+    <div id="home" class="container intro">
+        <h1>Hi, I’m [Your Name]</h1>
+        <p>A data scientist with expertise in analytics, machine learning, and storytelling. I specialize in solving complex problems and transforming data into actionable insights.</p>
+    </div>
+
+    <div id="projects" class="container">
+        <h2>Latest Projects</h2>
+        <div class="projects">
+            <div class="project">
+                <h3>Project 1</h3>
+                <p>Short description of the project goes here.</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 2</h3>
+                <p>Short description of the project goes here.</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project">
+                <h3>Project 3</h3>
+                <p>Short description of the project goes here.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align:center; padding:20px; background:#f1f1f1;">
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
     </footer>
 </body>
 </html>
