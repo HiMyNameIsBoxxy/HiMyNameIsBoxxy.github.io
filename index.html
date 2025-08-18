@@ -1,139 +1,162 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huan - Data Scientist</title>
-    <!-- Link to Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif; /* Updated font */
-            line-height: 1.6;
-            color: #333;
-        }
-        header {
-            background: #fff;
-            border-bottom: 1px solid #ddd;
-            padding: 20px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        header h2 {
-            margin: 0;
-        }
-        header nav {
-            display: flex;
-            gap: 30px; /* cleaner spacing */
-            margin-left: 30px;
-        }
-        header nav a {
-            font-size: 1.2em;
-            text-decoration: none;
-            color: #333;
-        }
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Huan - Data Scientist</title>
+        <!-- Link to Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+            body {
+                margin: 0;
+                font-family: 'Roboto', sans-serif; /* Updated font */
+                line-height: 1.6;
+                color: #333;
+            }
+            header {
+                background: #fff;
+                border-bottom: 1px solid #ddd;
+                padding: 20px 40px;   /* more breathing room left/right */
+                display: flex;
+                justify-content: space-between; 
+                align-items: center;
+                gap: 60px;  /* space between Huan and the nav links */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1000;
+            }
+            header h2 {
+                margin: 0;
+            }
+            header nav {
+                display: flex;
+                gap: 30px; /* cleaner spacing */
+                margin-right: 80px;
+            }
+            header nav a {
+                font-size: 1.2em;
+                text-decoration: none;
+                color: #333;
+            }
 
-        header nav a:hover {
-            text-decoration: underline;
-        }
-        .container {
-            padding: 80px 20px 20px; /* Reduced padding to minimize space */
-            margin: 0 auto;
-            max-width: 100%;
-        }
-        h1, h2 {
-            margin-bottom: 10px;
-        }
-        .intro {
-            margin-bottom: 10px; /* Reduced margin */
-            text-align: left;
-        }
-        .intro h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-        }
-        .intro p {
-            font-size: 1.5em;
-        }
-        .projects {
-            display: flex;
-            flex-direction: column;
-        }
-        .project {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            position: relative;
-        }
-        .project img {
-            width: 100%;
-            display: block;
-        }
-        .project .description {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            padding: 10px;
-            font-size: 1em;
-            max-width: calc(100% - 20px);
-            box-sizing: border-box;
-        }
-        .project a {
-            display: block;
-            width: 100%;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div>
-            <h2>Huan</h2>
-        </div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="https://github.com/HiMyNameIsBoxxy" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/in/huan-shuo-hsu" target="_blank">LinkedIn</a>
-            <a href="resume.pdf" target="_blank">Resume</a>
-        </nav>
-    </header>
-
-    <div id="home" class="container intro">
-        <h1>Hi, I’m Huan.</h1>
-        <p>An aspiring data scientist with diverse background in machine learning, analytics, and application design. Check out my projects!</p>
-    </div>
-
-    <div id="projects" class="container">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="project">
-                <a href="statistical_analysis.html">
-                    <div class="description"><i class="fa-solid fa-chart-line"></i> Project 1: Statistical Analysis</div>
-                    <img src="https://via.placeholder.com/1200x400" alt="Statistical Analysis">
-                </a>
+            header nav a:hover {
+                text-decoration: underline;
+            }
+            .container {
+                padding: 80px 20px 20px; /* Reduced padding to minimize space */
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            h1, h2 {
+                margin-bottom: 10px;
+            }
+            .intro {
+                margin-bottom: 10px; /* Reduced margin */
+                text-align: left;
+            }
+            .intro h1 {
+                font-size: 4.5em;
+                font-weight: bold;
+            }
+            .intro p {
+                font-size: 3.5em;
+            }
+            .projects {
+                display: grid;
+                grid-template-columns: 1fr 1fr; /* 2 projects per row */
+                gap: 30px; /* spacing between them */
+            }
+            .project {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                position: relative;
+            }
+            .project img {
+                width: 100%;
+                display: block;
+            }
+            .project .description {
+                position: relative;
+                background: #f9f9f9;
+                color: #333;
+                padding: 20px; /* bigger padding */
+                font-size: 1.3em; /* larger text */
+                margin-top: 10px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                text-align: center;
+                transition: transform 0.2s ease-in-out; /* hover effect */
+            }
+            .project a {
+                display: block;
+                width: 100%;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <h2>Huan</h2>
             </div>
-            <div class="project">
-                <a href="predictive_modeling.html">
-                    <div class="description"><i class="fa-solid fa-robot"></i> Project 2: Predictive Modeling</div>
-                    <img src="https://via.placeholder.com/1200x400" alt="Predictive Modeling">
-                </a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="https://github.com/HiMyNameIsBoxxy" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/huan-shuo-hsu" target="_blank">LinkedIn</a>
+                <a href="resume.pdf" target="_blank">Resume</a>
+            </nav>
+        </header>
+
+        <div id="home" class="container intro">
+            <h1>Hi, I’m Huan.</h1>
+            <p>I love Computer Science, Data Science, and UX Design.</p>
+        </div>
+
+        <div id="projects" class="container">
+            <h2>Data Science Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <a href="statistical_analysis.html">
+                        <div class="description">
+                            <i class="fa-solid fa-chart-line"></i> Statistical Analysis
+                        </div>
+                    </a>
+                </div>
+                <div class="project">
+                    <a href="predictive_modeling.html">
+                        <div class="description">
+                            <i class="fa-solid fa-robot"></i> Predictive Modeling
+                        </div>
+                    </a>
+                </div>
+            </div>
+        
+            <h2 style="margin-top:40px;">Application Development Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <a href="ai_travel_planner.html">
+                        <div class="description">
+                            <i class="fa-solid fa-plane"></i> AI Travel Planner
+                        </div>
+                    </a>
+                </div>
+                <div class="project">
+                    <a href="portfolio_site.html">
+                        <div class="description">
+                            <i class="fa-solid fa-globe"></i> Portfolio Website
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <footer style="text-align:center; padding:20px; background:#f1f1f1;">
-        <p>&copy; 2024 Huan. All rights reserved.</p>
-    </footer>
-</body>
-</html>
+
+        <footer style="text-align:center; padding:20px; background:#f1f1f1;">
+            <p>&copy; 2025 Huan. All rights reserved.</p>
+        </footer>
+    </body>
+    </html>
