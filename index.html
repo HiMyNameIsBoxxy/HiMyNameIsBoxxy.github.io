@@ -17,7 +17,7 @@
             header {
                 background: #fff;
                 border-bottom: 1px solid #ddd;
-                padding: 20px 40px;   /* more breathing room left/right */
+                padding: 20px 21px;   /* more breathing room left/right */
                 display: flex;
                 justify-content: space-between; 
                 align-items: center;
@@ -53,20 +53,29 @@
             h1, h2 {
                 margin-bottom: 10px;
             }
+            h2 {    
+                font-size: 2.5em;   /* bigger text (default is ~1.5em) */
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-align: left;   /* or "center" if you want them centered */
+            }
             .intro {
                 margin-bottom: 10px; /* Reduced margin */
                 text-align: left;
+                padding-left: 10;
             }
             .intro h1 {
                 font-size: 4.5em;
                 font-weight: bold;
+                margin-bottom: 5px; 
             }
             .intro p {
-                font-size: 3.5em;
+                font-size: 2.5em;
+                margin-top: 0;
             }
             .projects {
                 display: grid;
-                grid-template-columns: 1fr 1fr; /* 2 projects per row */
+                grid-template-columns: 1fr; /* 1 project per row */
                 gap: 30px; /* spacing between them */
             }
             .project {
@@ -83,17 +92,18 @@
                 position: relative;
                 background: #f9f9f9;
                 color: #333;
-                padding: 20px; /* bigger padding */
+                padding: 15px 20px; /* bigger padding */
                 font-size: 1.3em; /* larger text */
                 margin-top: 10px;
                 border: 1px solid #ddd;
                 border-radius: 10px;
-                text-align: center;
+                text-align: left;
                 transition: transform 0.2s ease-in-out; /* hover effect */
+                max-width: 400px;
             }
             .project a {
-                display: block;
-                width: 100%;
+                display: incline-block;
+                width: auto;
                 text-decoration: none;
             }
         </style>
@@ -113,11 +123,11 @@
 
         <div id="home" class="container intro">
             <h1>Hi, I’m Huan.</h1>
-            <p>I love Computer Science, Data Science, and UX Design.</p>
+            <p>I enjoy to understand and create.</p>
         </div>
 
         <div id="projects" class="container">
-            <h2>Data Science Projects</h2>
+            <h2>Analysis</h2>
             <div class="projects">
                 <div class="project">
                     <a href="statistical_analysis.html">
@@ -135,19 +145,12 @@
                 </div>
             </div>
         
-            <h2 style="margin-top:40px;">Application Development Projects</h2>
+            <h2 style="margin-top:40px;">Apps</h2>
             <div class="projects">
                 <div class="project">
                     <a href="ai_travel_planner.html">
                         <div class="description">
-                            <i class="fa-solid fa-plane"></i> AI Travel Planner
-                        </div>
-                    </a>
-                </div>
-                <div class="project">
-                    <a href="portfolio_site.html">
-                        <div class="description">
-                            <i class="fa-solid fa-globe"></i> Portfolio Website
+                            <i class="fa-solid fa-plane"></i> AI Travel Planner (Work In Progress)
                         </div>
                     </a>
                 </div>
