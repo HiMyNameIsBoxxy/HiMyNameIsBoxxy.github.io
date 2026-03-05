@@ -1,165 +1,511 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Huan - Data Scientist</title>
-        <!-- Link to Google Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <style>
-            body {
-                margin: 0;
-                font-family: 'Roboto', sans-serif; /* Updated font */
-                line-height: 1.6;
-                color: #333;
-            }
-            header {
-                background: #fff;
-                border-bottom: 1px solid #ddd;
-                padding: 20px 21px;   /* more breathing room left/right */
-                display: flex;
-                justify-content: space-between; 
-                align-items: center;
-                gap: 60px;  /* space between Huan and the nav links */
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                z-index: 1000;
-            }
-            header h2 {
-                margin: 0;
-            }
-            header nav {
-                display: flex;
-                gap: 30px; /* cleaner spacing */
-                margin-right: 50px;
-            }
-            header nav a {
-                font-size: 1.2em;
-                text-decoration: none;
-                color: #333;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huan - Data Scientist</title>
 
-            header nav a:hover {
-                text-decoration: underline;
-            }
-            .container {
-                padding: 80px 20px 20px; /* Reduced padding to minimize space */
-                margin: 0 auto;
-                max-width: 100%;
-            }
-            h1, h2 {
-                margin-bottom: 10px;
-            }
-            h2 {    
-                font-size: 2.5em;   /* bigger text (default is ~1.5em) */
-                font-weight: bold;
-                margin-bottom: 20px;
-                text-align: left;   /* or "center" if you want them centered */
-            }
-            .intro {
-                margin-bottom: 10px; /* Reduced margin */
-                text-align: left;
-                padding-left: 10;
-            }
-            .intro h1 {
-                font-size: 4.5em;
-                font-weight: bold;
-                margin-bottom: 5px; 
-            }
-            .intro p {
-                font-size: 2.5em;
-                margin-top: 0;
-            }
-            .projects {
-                display: grid;
-                grid-template-columns: 1fr; /* 1 project per row */
-                gap: 30px; /* spacing between them */
-            }
-            .project {
-                width: 100%;
-                margin: 0;
-                padding: 0;
-                position: relative;
-            }
-            .project img {
-                width: 100%;
-                display: block;
-            }
-            .project .description {
-                position: relative;
-                background: #f9f9f9;
-                color: #333;
-                padding: 15px 20px; /* bigger padding */
-                font-size: 1.3em; /* larger text */
-                margin-top: 10px;
-                border: 1px solid #ddd;
-                border-radius: 10px;
-                text-align: left;
-                transition: transform 0.2s ease-in-out; /* hover effect */
-                max-width: 400px;
-            }
-            .project a {
-                display: incline-block;
-                width: auto;
-                text-decoration: none;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <div>
-                <h2>Huan</h2>
-            </div>
-            <nav>
-                <a href="#home">Home</a>
-                <a href="https://github.com/HiMyNameIsBoxxy" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/huan-shuo-hsu" target="_blank">LinkedIn</a>
-                <a href="resume.pdf" target="_blank">Resume</a>
-            </nav>
-        </header>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-        <div id="home" class="container intro">
-            <h1>Hi, I’m Huan.</h1>
-            <p>I enjoy to understand and to create.</p>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #fff;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 60px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    header h2 {
+      margin: 3px;
+      font-size: 1.6em;
+    }
+
+    header nav {
+      display: flex;
+      gap: 26px;
+      margin-right: 3px;
+    }
+
+    header nav a {
+      font-size: 1.05em;
+      text-decoration: none;
+      color: #333;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
+    }
+
+    .intro{
+        display: flex;
+        align-items: flex-end;
+        gap: 28px;
+    }
+
+    /* profile photo */
+    .profile-photo{
+        width: 180px;
+        height: 180px;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 1px solid #e6e6e6;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    }
+
+    /* text block */
+    .intro-text h1{
+        margin: 0;
+    }
+
+    /* Page containers */
+    .container {
+      padding: 90px 24px 24px;
+      margin: 0 auto;
+      max-width: 1400px; /* keeps content readable on ultra-wide screens */
+      width: 100%;
+    }
+
+    /* Intro */
+    .intro {
+      padding-top: 105px; /* accounts for fixed header */
+      padding-bottom: 10px;
+    }
+
+    .intro h1 {
+      margin: -3px;
+      font-size: 4.2em;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .tagline {
+      font-size: 2.2rem;  /* stable size (not multiplied by h1) */
+      font-weight: 400;
+      margin-left: 14px;
+      display: inline-block;
+      color: #333;
+    }
+
+    /* Projects section spacing */
+    #projects.container {
+      padding-top: 10px;  /* reduce gap from intro */
+    }
+
+    h2.section-title {
+      font-size: 2.3em;
+      font-weight: 700;
+      margin: 12px 0 18px;
+    }
+
+    /* Grid */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 26px;
+      width: 100%;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    /* Card */
+    .card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid #e6e6e6;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.10);
+    }
+
+    /* Top image area (placeholder-friendly) */
+    .card-image {
+      width: 100%;
+      height: 170px;
+      background: linear-gradient(135deg, #f2f2f2, #fafafa);
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Optional: show an icon in the image area if no image */
+    .card-image .hero-icon {
+      font-size: 42px;
+      color: #666;
+      opacity: 0.9;
+    }
+
+    .card-body {
+      padding: 18px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      min-height: 220px; /* helps cards stay consistent */
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 1.25em;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 0.92em;
+      color: #666;
+    }
+
+    .card-meta i {
+      margin-right: 8px;
+    }
+
+    .card-desc {
+      margin: 0;
+      color: #444;
+      font-size: 0.98em;
+      line-height: 1.5;
+
+      /* clamp to keep equal-ish heights */
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card-button {
+      margin-top: auto;
+      display: inline-block;
+      padding: 10px 14px;
+      border: 1px solid #ddd;
+      border-radius: 999px;
+      font-size: 0.95em;
+      color: #333;
+      width: fit-content;
+      background: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f1f1f1;
+      margin-top: 30px;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      .container { padding-left: 16px; padding-right: 16px; }
+      .intro h1 { font-size: 2.8em; }
+      .tagline { font-size: 1.3rem; margin-left: 0; margin-top: 10px; }
+      .tagline { display: block; }
+      .projects { grid-template-columns: 1fr; }
+      .card-image { height: 150px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div>
+      <h2>Huan's Portfolio</h2>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="https://github.com/HiMyNameIsBoxxy" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/huan-shuo-hsu" target="_blank">LinkedIn</a>
+    </nav>
+  </header>
+
+    <div id="home" class="container intro">
+
+        <img class="profile-photo" src="photo.jpg" alt="Huan profile photo">
+
+        <div class="intro-text">
+            <h1>
+                Hi, I’m Huan.
+                <span class="tagline">I enjoy exploring and building with data.</span>
+            </h1>
         </div>
 
-        <div id="projects" class="container">
-            <h2>Analysis</h2>
-            <div class="projects">
-        
-                <div class="project">
-                    <a href="statistical_analysis.html">
-                        <div class="description">
-                            <i class="fa-solid fa-chart-line"></i> Statistical Analysis
-                        </div>
-                    </a>
-                </div>
-        
-                <div class="project">
-                    <a href="predictive_modeling.html">
-                        <div class="description">
-                            <i class="fa-solid fa-robot"></i> Predictive Modeling
-                        </div>
-                    </a>
-                </div>
-        
-                <div class="project">
-                    <a href="product-classification-recommender-system.html">
-                        <div class="description">
-                            <i class="fa-solid fa-layer-group"></i> Product Classification & Recommender System
-                        </div>
-                    </a>
-                </div>
-        
+    </div>
+
+  <div id="projects" class="container">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects">
+      <div class="project">
+        <a class="card" href="statistical_analysis.html">
+          <div class="card-image">
+            <i class="fa-solid fa-chart-line hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Advertising Experiment Analysis</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-r"></i>R</span>
             </div>
-        </div>
+            <p class="card-desc">
+              A statistical experiment evaluating the impact of YouTube advertising strategies on Amazon sales using hypothesis testing and simulation.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
 
+      <div class="project">
+        <a class="card" href="predictive_modeling.html">
+          <div class="card-image">
+            <i class="fa-solid fa-robot hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Advertising Click-Through Rate Prediction</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-r"></i>R</span>
+            </div>
+            <p class="card-desc">
+              A machine learning project predicting advertising click-through rate (CTR) using feature engineering, data transformation, and models including regression, decision trees, and XGBoost.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
 
-        <footer style="text-align:center; padding:20px; background:#f1f1f1;">
-            <p>&copy; 2025 Huan. All rights reserved.</p>
-        </footer>
-    </body>
-    </html>
+      <div class="project">
+        <a class="card" href="product-classification-recommender-system.html">
+          <div class="card-image">
+            <i class="fa-solid fa-layer-group hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Product Classification & Recommender System</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-r"></i>R</span>
+            </div>
+            <p class="card-desc">
+              A hybrid machine learning system that classifies products using structured attributes and generates recommendations based on similarity between items.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="https://github.com/HiMyNameIsBoxxy/stock-analysis-dashboard" target="_blank">
+          <div class="card-image">
+            <i class="fa-solid fa-chart-line hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Stock Analysis Dashboard</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Interactive dashboard combining stock market OHLCV data with news sentiment analysis to explore trends, company performance, and market dynamics using FastAPI, MongoDB, and Streamlit.
+            </p>
+            <span class="card-button">Open on GitHub</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="Modern Time Series.html">
+          <div class="card-image">
+            <i class="fa-solid fa-wave-square hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Time Series Forecasting & Diagnostics</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Time series forecasting project analyzing trend, seasonality, and stationarity with statistical diagnostics and forecasting models, evaluated using rolling backtesting and error metrics.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="Healthcare Feature Creation.html">
+          <div class="card-image">
+            <i class="fa-solid fa-hospital hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Healthcare Feature Engineering for Medical Billing Analysis</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i> Python</span>
+              <span>Feature Eng</span>
+            </div>
+            <p class="card-desc">
+              Feature engineering project transforming healthcare billing data into predictive features, including DRG-level metrics, provider utilization signals, and cost-based indicators to support downstream modeling and anomaly detection.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="Feature Creation.html">
+          <div class="card-image">
+            <i class="fa-solid fa-gears hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Feature Engineering for Predictive Modeling</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Feature engineering project developing predictive variables from structured datasets, including aggregation, normalization, and derived metrics to improve downstream machine learning model performance.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="PCA & iForest.html">
+          <div class="card-image">
+            <i class="fa-solid fa-magnifying-glass-chart hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Unsupervised Anomaly Detection with PCA & Isolation Forest</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Built an unsupervised anomaly detection pipeline using Principal Component Analysis (PCA) for dimensionality reduction and Isolation Forest to identify abnormal patterns and outliers in high-dimensional datasets.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="cnn-tumor-detection.html">
+          <div class="card-image">
+            <i class="fa-solid fa-brain hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Brain Tumor Detection with Convolutional Neural Networks</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Deep learning project using Convolutional Neural Networks (CNNs) to classify brain MRI images for tumor detection, including image preprocessing, model training, and evaluation of classification performance.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="fraud-detection-pagerank.html">
+          <div class="card-image">
+            <i class="fa-solid fa-diagram-project hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Graph-Based Fraud Detection with PageRank</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Fraud detection project modeling financial transactions as a network graph and applying the PageRank algorithm to identify suspicious accounts based on network connectivity and influence patterns.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="AutoML.html">
+          <div class="card-image">
+            <i class="fa-solid fa-gears hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Automated Machine Learning for Predictive Modeling</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Automated machine learning project comparing predictive models through automated preprocessing, model selection, and hyperparameter optimization to identify the best-performing model.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="Autoencoder.html">
+          <div class="card-image">
+            <i class="fa-solid fa-network-wired hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Deep Learning Anomaly Detection with Autoencoders</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Implemented an autoencoder-based anomaly detection model that learns compressed representations of normal patterns and identifies anomalous observations through reconstruction error.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="project">
+        <a class="card" href="mortgage-default-prediction.html">
+          <div class="card-image">
+            <i class="fa-solid fa-house hero-icon"></i>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">Mortgage Default Risk Prediction</h3>
+            <div class="card-meta">
+              <span><i class="fa-brands fa-python"></i>Python</span>
+            </div>
+            <p class="card-desc">
+              Built predictive models to estimate mortgage default risk using structured loan data, applying feature engineering and machine learning classification techniques to identify high-risk borrowers.
+            </p>
+            <span class="card-button">Continue Reading</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Huan. All rights reserved.</p>
+  </footer>
+</body>
+</html>
