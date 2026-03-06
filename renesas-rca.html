@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Root Cause Analysis for Semiconductor Manufacturing Failures | Huan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #fafafa;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+    header nav {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    header nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+    }
+    header nav a:hover { text-decoration: underline; }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 24px 48px;
+    }
+    .hero, .section {
+      background: #fff;
+      border: 1px solid #e7e7e7;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 22px;
+    }
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #666;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin: 0 0 16px;
+    }
+    .hero p, .section p {
+      color: #555;
+      font-size: 1.05rem;
+      margin: 0 0 14px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid #d8d8d8;
+      background: #fff;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    }
+    .button.primary {
+      background: #333;
+      color: #fff;
+      border-color: #333;
+    }
+    .facts-grid, .findings-grid, .visual-grid, .pipeline {
+      display: grid;
+      gap: 16px;
+    }
+    .facts-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 24px; }
+    .findings-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 16px; }
+    .pipeline { grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-top: 18px; }
+    .visual-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 18px; }
+    .fact-card, .finding-card, .step {
+      border: 1px solid #e4e4e4;
+      border-radius: 14px;
+      padding: 18px;
+      background: #fcfcfc;
+    }
+    .fact-card .label {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      color: #777;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+    .fact-card .value { font-size: 1rem; font-weight: 500; }
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 1.9rem;
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+    }
+    .step h3, .finding-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+    .step p, .finding-card p {
+      margin: 0;
+      font-size: 0.96rem;
+      color: #666;
+    }
+    .highlight-list {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: #555;
+    }
+    .highlight-list li { margin-bottom: 8px; }
+    .visual-card {
+      border: 1px solid #e4e4e4;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .visual-card img {
+      width: 100%;
+      display: block;
+      background: #f4f4f4;
+    }
+    .visual-caption {
+      padding: 14px 16px 16px;
+    }
+    .visual-caption h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+    }
+    .visual-caption p {
+      margin: 0;
+      font-size: 0.94rem;
+      color: #666;
+    }
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #666;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero, .section { padding: 22px; }
+      .visual-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Huan's Portfolio</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="https://github.com/HiMyNameIsBoxxy" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/huan-shuo-hsu" target="_blank">LinkedIn</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="eyebrow">Featured Project</div>
+      <h1>Root Cause Analysis for Semiconductor Manufacturing Failures</h1>
+      <p>
+        Built a multivariate machine learning pipeline for Renesas Electronics to identify the
+        electrical test signals most predictive of Category C wafer failures and generate
+        interpretable threshold-based root cause rules for engineering investigation.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="Final Results and Recommendations.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i>
+          Read Results PDF
+        </a>
+        <a class="button" href="Final Project Process Flow Document.pdf" target="_blank">
+          <i class="fa-solid fa-diagram-project"></i>
+          View Process Flow PDF
+        </a>
+        <a class="button" href="index.html">
+          <i class="fa-solid fa-arrow-left"></i>
+          Back to Portfolio
+        </a>
+      </div>
+
+      <div class="facts-grid">
+        <div class="fact-card">
+          <div class="label">Client</div>
+          <div class="value">Renesas Electronics</div>
+        </div>
+        <div class="fact-card">
+          <div class="label">Problem</div>
+          <div class="value">Category C wafer yield failures</div>
+        </div>
+        <div class="fact-card">
+          <div class="label">Methods</div>
+          <div class="value">Lasso, Random Forest, XGBoost, Decision Tree</div>
+        </div>
+        <div class="fact-card">
+          <div class="label">Outcome</div>
+          <div class="value">Interpretable RCA rules + operational recommendations</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Problem</h2>
+      <p>
+        Renesas observed a persistent rise in Category C failures and needed a more scalable root
+        cause analysis approach than traditional univariate inspection. The goal was to identify the
+        electrical tests most associated with wafer yield loss and translate those signals into rules
+        engineers could act on.
+      </p>
+      <p>
+        The workflow used WT1 and WAT electrical tests, wafer and lot identifiers, probe card IDs,
+        and die-level labels from a single internal dataset so the analysis remained reproducible.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Approach</h2>
+      <p>
+        The pipeline combined preprocessing, model-based feature ranking, aggregation across three
+        methods, and an interpretable decision tree for multivariate RCA.
+      </p>
+
+      <div class="pipeline">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Preprocess Data</h3>
+          <p>Filter Category C failures, remove high-missingness features, handle structured missingness, and adjust for class imbalance.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Feature Selection</h3>
+          <p>Train Lasso, Random Forest, and XGBoost under cross-validation and hyperparameter tuning.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Aggregate Rankings</h3>
+          <p>Normalize and average feature importance scores across the three models to reduce model-specific noise.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Top 50 Features</h3>
+          <p>Select the most stable and influential electrical tests for final RCA modeling.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <h3>Decision Tree RCA</h3>
+          <p>Generate threshold-based rules that define high-risk regions in test space.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Key Findings</h2>
+      <div class="findings-grid">
+        <div class="finding-card">
+          <h3>Category C dominated yield loss</h3>
+          <p>Category C accounted for about 73% of probe-stage failures, making it the primary yield limiter.</p>
+        </div>
+        <div class="finding-card">
+          <h3>First-wafer instability</h3>
+          <p>Wafer Number 1 showed roughly 28% failure rate, substantially higher than later wafers.</p>
+        </div>
+        <div class="finding-card">
+          <h3>Probe card variability</h3>
+          <p>Probe Cards 02 and 03 had the highest failure rates, pointing to hardware-driven yield distortion.</p>
+        </div>
+        <div class="finding-card">
+          <h3>Top predictive signal</h3>
+          <p>WAT Test 30 Polar emerged as the strongest overall predictor after aggregating the feature rankings.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Selected Visuals</h2>
+      <p>
+        These visuals come from the sponsor presentation and highlight the most important operational findings and model structure.
+      </p>
+
+      <div class="visual-grid">
+
+        <div>
+          <img src="renesas_visuals/slide_14.png" style="width:100%; border-radius:12px;">
+          <p>Exploratory analysis revealed that Wafer 1 and 4 exhibited the highest failure rate.</p>
+        </div>
+
+        <div>
+          <img src="renesas_visuals/slide_15.png" style="width:100%; border-radius:12px;">
+          <p>Comparison of failure rates across probe cards shows measurable variation in defect rates, suggesting that testing hardware conditions may influence observed failures during wafer testing.</p>
+        </div>
+        
+        <div>
+          <img src="renesas_visuals/slide_16.png" style="width:100%; border-radius:12px;">
+          <p>Spatial analysis across wafer zones highlights elevated failure rates in Zone 1 & 4, indicating potential contamination or process instability near wafer edges.</p>
+        </div>
+
+        <div>
+          <img src="renesas_visuals/slide_27.png" style="width:100%; border-radius:12px;">
+          <p>A multi-model feature selection pipeline combining LASSO, Random Forest, and XGBoost was used to identify the most predictive electrical tests associated with failure events.</p>
+        </div>
+
+        <div>
+          <img src="renesas_visuals/slide_45.png" style="width:100%; border-radius:12px;">
+          <p>Feature importance scores were aggregated across multiple models to generate a stable ranking of electrical tests most strongly associated with Category-C wafer failures.</p>
+        </div>
+
+        <div>
+          <img src="renesas_visuals/slide_50.png" style="width:100%; border-radius:12px;">
+          <p>An interpretable decision tree root-cause analysis model was constructed to trace combinations of electrical test thresholds that lead to wafer failure outcomes.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Business Recommendations</h2>
+      <ul class="highlight-list">
+        <li>Introduce warm-up or dummy runs to reduce first-wafer instability.</li>
+        <li>Implement structured probe card health monitoring.</li>
+        <li>Use high-importance WAT and WT1 tests as targeted engineering investigation anchors.</li>
+        <li>Expand future models with spatial, equipment, and process variables.</li>
+        <li>Build integrated infrastructure for repeatable multivariate RCA deployment.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Project Documents</h2>
+      <div class="hero-actions">
+        <a class="button primary" href="Final Results and Recommendations.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i>
+          Results and Recommendations
+        </a>
+        <a class="button" href="Final Project Process Flow Document.pdf" target="_blank">
+          <i class="fa-solid fa-file-pdf"></i>
+          Process Flow Breakdown
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Huan. All rights reserved.
+  </footer>
+</body>
+</html>
